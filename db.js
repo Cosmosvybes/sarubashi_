@@ -1,5 +1,9 @@
-const mysql = require('mysql2');
-const dotenv = require('dotenv')
+// const mysql = require('mysql2');
+// const dotenv = require('dotenv')
+
+import mysql from 'mysql2'
+import dotenv from 'dotenv';
+
 dotenv.config();
 const connection = {
     user: process.env.MYSQL_USER,
@@ -13,7 +17,7 @@ const pool = mysql.createPool(connection).promise();
 
 async function createAccount(wallet) {
     const [user] = await pool.query(`
-    insert into users(wallet)
+    insert into account(wallet)
     values(?)`, [wallet]);
     return getUser(wallet);
 }
@@ -30,4 +34,7 @@ const updateBalance = async (wallet, balance) => {
     return account;
 }
 
-module.exports = { createAccount, getUser, updateBalance }
+
+const data = await createAccount('wallet1');
+console.log(data)
+// module.exports = { createAccount, getUser, updateBalance }
