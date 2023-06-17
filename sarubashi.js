@@ -42,7 +42,7 @@ async function updateUser(wallet, amount) {
   const balance = await getUser(wallet);
   const newbalance = Number(balance.balance) + Number(amount)
   newbalance.toFixed(2)
-  await collection.updateOne({ wallet: wallet }, { $set: { balance: Number(newbalance).toFixed(3) } });
+  await collection.updateOne({ wallet: wallet }, { $set: { balance: Number(newbalance).toFixed(2) } });
   return getUser(wallet);
 }
 
