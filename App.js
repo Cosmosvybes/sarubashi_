@@ -38,10 +38,4 @@ app.post('/buytoken', async (req, res) => {
 
 
 
-
-
-
-
-
-
 app.listen(port, () => { console.log(`Sarubashi server running on port ${port}`) })
